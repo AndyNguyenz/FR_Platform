@@ -1,0 +1,1123 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="robots" content="noindex, nofollow" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet" />
+	<title>Fiscal Realities — Platform Catalogue Presentation</title>
+	<style>
+		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+		body { overflow-x: hidden; }
+
+		.page {
+			background: #f0f4fa;
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+			width: 100%;
+		}
+
+		/* ── Hero ── */
+		.hero {
+			background-color: #1F3A5F;
+			min-height: 100vh;
+			display: flex;
+			align-items: stretch;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 3;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			justify-content: center;
+			gap: 1.25rem;
+			padding: 64px 80px;
+			max-width: 640px;
+			width: 100%;
+		}
+
+		.hero-logo {
+			height: 44px;
+			width: auto;
+			display: block;
+			margin-bottom: 16px;
+		}
+
+		.eyebrow {
+			font-family: 'Cinzel', serif;
+			font-size: 0.7rem;
+			letter-spacing: 0.4em;
+			text-transform: uppercase;
+			color: rgba(255,255,255,0.75);
+		}
+
+		.hero-title {
+			font-family: 'Cinzel', serif;
+			font-size: clamp(2rem, 4.5vw, 3.2rem);
+			font-weight: 600;
+			color: #ffffff;
+			letter-spacing: 0.04em;
+			line-height: 1.2;
+		}
+
+		.hero-sub {
+			font-size: clamp(1rem, 1.6vw, 1.15rem);
+			color: rgba(255,255,255,0.82);
+			line-height: 1.8;
+			max-width: 480px;
+		}
+
+		.hero-cta {
+			display: flex;
+			gap: 16px;
+			align-items: center;
+			margin-top: 8px;
+		}
+
+		.btn-primary {
+			font-family: 'Cinzel', serif;
+			font-size: 0.75rem;
+			letter-spacing: 0.2em;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: #1F3A5F;
+			background: #ffffff;
+			padding: 12px 28px;
+			transition: background 0.15s;
+		}
+
+		.btn-primary:hover { background: #e8eef8; }
+
+		.btn-ghost {
+			font-family: 'Cinzel', serif;
+			font-size: 0.8rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			text-decoration: none;
+			color: rgba(255,255,255,0.85);
+			transition: color 0.15s;
+		}
+
+		.btn-ghost:hover { color: #ffffff; }
+
+		/* ── Floating icons ── */
+		.icon-layer {
+			flex: 1;
+			position: relative;
+		}
+
+		.float-icon {
+			position: absolute;
+			left: var(--x);
+			top:  var(--y);
+			width: 56px;
+			height: 56px;
+			transform: translate(-50%, -50%) scale(var(--s, 1)) translateY(0px);
+			opacity: 0.6;
+			filter: drop-shadow(0 10px 18px rgba(0,0,0,.22));
+			animation: drift 9s ease-in-out infinite;
+		}
+
+		.float-icon:nth-child(2) { animation-duration: 11s; animation-delay: -2s; }
+		.float-icon:nth-child(3) { animation-duration: 13s; animation-delay: -4s; }
+		.float-icon:nth-child(4) { animation-duration: 10s; animation-delay: -6s; }
+		.float-icon:nth-child(5) { animation-duration: 12s; animation-delay: -3s; }
+		.float-icon:nth-child(6) { animation-duration:  9s; animation-delay: -4s; }
+		.float-icon:nth-child(7) { animation-duration: 14s; animation-delay: -5s; }
+		.float-icon:nth-child(8) { animation-duration: 12s; animation-delay: -2s; }
+		.float-icon:nth-child(9) { animation-duration: 11s; animation-delay: -3s; }
+
+		@keyframes drift {
+			0%   { transform: translate(-50%, -50%) scale(var(--s,1)) translateY(0px);    }
+			50%  { transform: translate(-50%, -50%) scale(var(--s,1)) translateY(-10px);  }
+			100% { transform: translate(-50%, -50%) scale(var(--s,1)) translateY(0px);    }
+		}
+
+		/* ── Tools section ── */
+		.tools-section {
+			background: #f0f4fa;
+			padding: 80px 48px;
+			overflow: hidden;
+		}
+
+		.section-inner { max-width: 1000px; margin: 0 auto; width: 100%; }
+
+		.section-eyebrow {
+			font-family: 'Cinzel', serif;
+			font-size: 0.7rem;
+			letter-spacing: 0.35em;
+			text-transform: uppercase;
+			color: #1f3f8f;
+			margin-bottom: 10px;
+		}
+
+		.section-title {
+			font-family: 'Cinzel', serif;
+			font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+			font-weight: 600;
+			color: #1F3A5F;
+			letter-spacing: 0.05em;
+			margin-bottom: 16px;
+		}
+
+		.catalogue-intro {
+			font-size: 1.05rem;
+			color: #4a5a80;
+			line-height: 1.8;
+			max-width: 760px;
+			margin-bottom: 56px;
+		}
+
+		.family-block { margin-bottom: 64px; }
+		.family-block:last-child { margin-bottom: 0; }
+
+		.family-title {
+			font-family: 'Cinzel', serif;
+			font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+			font-weight: 600;
+			color: #1F3A5F;
+			letter-spacing: 0.04em;
+			margin-bottom: 10px;
+		}
+
+		.family-intro {
+			font-size: 0.95rem;
+			color: #4a5a80;
+			line-height: 1.7;
+			max-width: 720px;
+			margin-bottom: 28px;
+		}
+
+		.tool-grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 20px;
+		}
+
+		.tool-card {
+			background: #ffffff;
+			border: 1px solid #dce6f5;
+			padding: 28px 24px;
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+			text-decoration: none;
+			transition: box-shadow 0.15s, border-color 0.15s;
+		}
+
+		a.tool-card:hover {
+			border-color: #2b4fa8;
+			box-shadow: 0 6px 24px rgba(20, 46, 87, 0.1);
+		}
+
+		.tool-card.coming { opacity: 0.55; }
+
+		.card-top {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.tag {
+			font-family: 'Cinzel', serif;
+			font-size: 0.68rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: #4a5a80;
+		}
+
+		.pill {
+			font-family: 'Cinzel', serif;
+			font-size: 0.65rem;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+			padding: 3px 8px;
+			border-radius: 99px;
+		}
+
+		.pill-live { background: #d1fae5; color: #065f46; }
+		.pill-soon { background: #e5e7eb; color: #4b5563; }
+
+		.card-title {
+			font-family: 'Cinzel', serif;
+			font-size: 1rem;
+			font-weight: 600;
+			color: #1F3A5F;
+			letter-spacing: 0.06em;
+		}
+
+		.card-desc {
+			font-size: 1rem;
+			color: #4a5a80;
+			line-height: 1.75;
+			flex: 1;
+		}
+
+		.card-action {
+			font-family: 'Cinzel', serif;
+			font-size: 0.7rem;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+			color: #1f3f8f;
+			border-top: 1px solid #eef2f9;
+			padding-top: 14px;
+			margin-top: 4px;
+		}
+
+		a.tool-card:hover .card-action { color: #1F3A5F; }
+		.card-action.muted { color: #6a80a8; }
+
+		/* ── About strip ── */
+		.about-section {
+			background: #ffffff;
+			border-top: 1px solid #dce6f5;
+			padding: 80px 48px;
+		}
+
+		.about-inner {
+			display: grid;
+			grid-template-columns: 1fr 240px;
+			gap: 80px;
+			align-items: center;
+		}
+
+		.about-title {
+			font-family: 'Cinzel', serif;
+			font-size: clamp(1.1rem, 2vw, 1.5rem);
+			font-weight: 600;
+			color: #1F3A5F;
+			letter-spacing: 0.05em;
+			margin-bottom: 20px;
+			margin-top: 10px;
+		}
+
+		.about-body {
+			font-size: 1.05rem;
+			color: #4a5a80;
+			line-height: 1.8;
+			margin-bottom: 12px;
+		}
+
+		/* ── Footer ── */
+		.footer {
+			background: #ffffff;
+			border-top: 1px solid #dce6f5;
+			padding: 24px 48px;
+			margin-top: auto;
+		}
+
+		.footer-inner {
+			max-width: 1000px;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			gap: 20px;
+		}
+
+		.footer-copy {
+			font-size: 0.95rem;
+			color: #4a5a80;
+			flex: 1;
+		}
+
+		.footer-link {
+			font-family: 'Cinzel', serif;
+			font-size: 0.8rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: #3d5088;
+			text-decoration: none;
+		}
+
+		.footer-link:hover { color: #2b4fa8; }
+
+		/* ── Responsive ── */
+		@media (max-width: 900px) {
+			.tool-grid   { grid-template-columns: 1fr; }
+			.about-inner { grid-template-columns: 1fr; gap: 40px; }
+		}
+
+		@media (max-width: 680px) {
+			.hero-content    { padding: 48px 28px; }
+			.tools-section   { padding: 60px 24px; }
+			.about-section   { padding: 60px 24px; }
+			.footer          { padding: 20px 24px; }
+			.hero-cta        { flex-direction: column; align-items: flex-start; }
+		}
+	</style>
+</head>
+<body>
+<div class="page">
+
+	<!-- ── Hero ── -->
+	<section class="hero">
+
+		<div class="hero-content">
+			<a href="https://fiscalrealities.com" target="_blank" rel="noopener">
+				<img
+					src="https://static.wixstatic.com/media/af5218_87e56e010634477bbd8482d735fb0c0e~mv2.png/v1/fill/w_276,h_53,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/FR-White-New7.png"
+					alt="Fiscal Realities"
+					class="hero-logo"
+				/>
+			</a>
+
+			<p class="eyebrow">Platform</p>
+			<h1 class="hero-title">Digital Tools for<br />Economic Practice</h1>
+			<p class="hero-sub">
+				Applied learning tools and analytical platforms for economists,
+				policy advisors, and the organisations that work with them.
+			</p>
+
+			<div class="hero-cta">
+				<a href="#tools" class="btn-primary">Explore the Catalogue ↓</a>
+				<a href="/login" class="btn-ghost">Admin Portal →</a>
+			</div>
+		</div>
+
+		<div class="icon-layer" aria-hidden="true">
+			<img class="float-icon" style="--x:12%; --y:28%; --s:2.4;" src="https://app.fiscalrealities.com/fr/impact-model/assets/balance.svg" alt="" />
+			<img class="float-icon" style="--x:72%; --y:20%; --s:2.0;" src="https://app.fiscalrealities.com/fr/impact-model/assets/corporate.svg" alt="" />
+			<img class="float-icon" style="--x:80%; --y:65%; --s:1.2;" src="https://app.fiscalrealities.com/fr/impact-model/assets/gavel.svg" alt="" />
+			<img class="float-icon" style="--x:30%; --y:72%; --s:1.7;" src="https://app.fiscalrealities.com/fr/impact-model/assets/governance.svg" alt="" />
+			<img class="float-icon" style="--x:48%; --y:16%; --s:1.5;" src="https://app.fiscalrealities.com/fr/impact-model/assets/finance.svg" alt="" />
+			<img class="float-icon" style="--x:42%; --y:52%; --s:1.6;" src="https://app.fiscalrealities.com/fr/impact-model/assets/analytic.svg" alt="" />
+			<img class="float-icon" style="--x:60%; --y:74%; --s:1.2;" src="https://app.fiscalrealities.com/fr/impact-model/assets/money_bag.svg" alt="" />
+			<img class="float-icon" style="--x:6%;  --y:68%; --s:1.5;" src="https://app.fiscalrealities.com/fr/impact-model/assets/saving.svg" alt="" />
+			<img class="float-icon" style="--x:57%; --y:38%; --s:1.4;" src="https://app.fiscalrealities.com/fr/impact-model/assets/business.svg" alt="" />
+		</div>
+
+	</section>
+
+	<!-- ── Tools ── -->
+	<section class="tools-section" id="tools">
+		<div class="section-inner">
+
+			<p class="section-eyebrow">Platform Catalogue</p>
+			<h2 class="section-title">The Full Fiscal Realities Platform</h2>
+			<p class="catalogue-intro">
+				One platform: a Nation data layer, a data portal, and six tool families on top.
+				Every tool reads from the same data spine and writes back to it, so each one makes
+				the others cheaper and smarter.
+			</p>
+
+			<!-- Family: Nation Data Portal & Visualization -->
+			<div class="family-block">
+				<p class="section-eyebrow">Nation Data Layer</p>
+				<h3 class="family-title">Nation Data Portal &amp; Visualization</h3>
+				<p class="family-intro">
+					The portal is the Nation's own window on its data: it holds the indicator catalogue plus the
+					Nation's own records, shows them back as maps and charts, and lets the Nation decide who sees
+					what. It is also the front door to every other tool.
+				</p>
+				<div class="tool-grid">
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Portal Component</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Nation Data Hub</h3>
+						<p class="card-desc">All ICA indicators with source, date and basis; Census, CWB, ISC profile and FNFTA statements refreshed automatically; uploads of laws, plans and BCRs with version history.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Portal Component</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Data Passport</h3>
+						<p class="card-desc">Where each record is stored (in Canada), who opened it and when, consent settings per dataset, and export or delete on request.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Portal Component</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Community Dashboard</h3>
+						<p class="card-desc">Population and housing, own source revenue over time, tax roll and assessment, service levels and plan progress; a council view and a member view.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Portal Component</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Land &amp; Parcel Viewer</h3>
+						<p class="card-desc">Reserve boundaries, parcels and interests, zoning, serviced and unserviced land, ATR sites; built on the developable land inventory.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Portal Component</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Peer Benchmarks</h3>
+						<p class="card-desc">The Nation's indicators beside regional and similar-size peers, anonymized; feeds the Investment Climate Index privately.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Portal Component</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Investor View</h3>
+						<p class="card-desc">A public page the Nation controls: site list, tax rates, approval process, contacts and labour profile.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Portal Component</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Chart &amp; Report Builder</h3>
+						<p class="card-desc">Pick indicators, build charts, and drop them into council packages, funding proposals and annual reports.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Portal Component</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Institution Data Feeds</h3>
+						<p class="card-desc">Consented, aggregate feeds to FNTC, FMB, FNFA, FNII and ISC reporting, so the Nation reports once instead of five times.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Family: AI Colleagues -->
+			<div class="family-block">
+				<p class="section-eyebrow">AI Colleagues</p>
+				<h3 class="family-title">Role-Specific AI Colleagues</h3>
+				<p class="family-intro">
+					Colleagues are role-specific AI workers for people who run whole departments alone. Every
+					colleague shares one base: the Nation's own laws, policies and council decisions loaded in,
+					a citation on every answer, and a clear rule for when to hand to a person.
+				</p>
+				<div class="tool-grid">
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For Nations</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Finance Colleague</h3>
+						<p class="card-desc">FAL and FMB standards, audit prep, budgets and variances, ISC reporting calendars, local revenue accounts, tax rates, capital planning.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For Nations</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Lands Colleague</h3>
+						<p class="card-desc">Land code or Indian Act processes, ATR steps and stalls, designations, leases and permits, registry work, interests on a parcel.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For Nations</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Public Works &amp; Assets Colleague</h3>
+						<p class="card-desc">Asset registry, condition ratings, O&amp;M budgets, ISC capital streams, FNII requirements, water operator reporting, tendering.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For Nations</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Governance Colleague</h3>
+						<p class="card-desc">Council packages, BCR and law drafting, election rules, policy drafting, minutes and records.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For Nations</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Housing Colleague</h3>
+						<p class="card-desc">CMHC and loan guarantee rules, allocation and waitlists, arrears, maintenance scheduling, rent-to-own.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For Nations</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Funding &amp; Reporting Colleague</h3>
+						<p class="card-desc">Every funding agreement and deadline, eligibility screening, proposal drafting, report assembly.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For EDCs</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Financial Analysis Colleague</h3>
+						<p class="card-desc">Pro formas, valuation, scenarios, term sheets, plain-language board summaries.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For EDCs</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Partnership &amp; Structuring Colleague</h3>
+						<p class="card-desc">JV and LP structures, IBA and equity terms, tax exemption limits, dividend policy back to the Nation.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For EDCs</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Bids &amp; Proposals Colleague</h3>
+						<p class="card-desc">RFP go/no-go screening, proposal drafting, capability library, certification rules.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For EDCs</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Capital &amp; Financing Colleague</h3>
+						<p class="card-desc">FNFA rules, AFI and lender products, loan guarantees, grant stacking, what lenders will ask for.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For EDCs</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Corporate Governance Colleague</h3>
+						<p class="card-desc">Board cycles, council and corporation separation, mandate letters, director duties, conflict screening.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For EDCs</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Projects &amp; Lands Colleague</h3>
+						<p class="card-desc">Site selection from the land inventory, servicing order, lease structuring, approval sequencing.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For EDCs</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Opportunity Scanning Colleague</h3>
+						<p class="card-desc">Major project pipeline in the territory, procurement forecasts, what neighbouring Nations are doing.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">For EDCs</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Investment Climate Agent</h3>
+						<p class="card-desc">A front end over the economic development model that runs readiness and impact scenarios on request.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Family: Front-Facing Tools -->
+			<div class="family-block">
+				<p class="section-eyebrow">Fiscal Toolkit</p>
+				<h3 class="family-title">Front-Facing Tools</h3>
+				<p class="family-intro">
+					Tools Nations, EDCs and institutions use directly. The five fiscal calculators bundle as one
+					Fiscal Toolkit with a shared login, sharing the Nation's data so nobody types the same numbers
+					twice.
+				</p>
+				<div class="tool-grid">
+
+					<a href="/survey" class="tool-card">
+						<div class="card-top">
+							<span class="tag">Research Tool</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Survey Platform</h3>
+						<p class="card-desc">A structured feedback and data collection platform for economic research and client engagement. Design surveys, distribute access codes, and analyse responses.</p>
+						<div class="card-action muted">Distributed via access code</div>
+					</a>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Front-Facing Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">ICA Snapshot &amp; Pro</h3>
+						<p class="card-desc">Sourced report, presence index, insights, upgrade path to Pro scores, transaction cost rating and Estimator ratings.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Front-Facing Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Investment Climate Index</h3>
+						<p class="card-desc">Private 0 to 100 score per Nation with a confidence grade, peer benchmarks, and change over time.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card">
+						<div class="card-top">
+							<span class="tag">Front-Facing Tool</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Community Support Tool</h3>
+						<p class="card-desc">Project pages, Q&amp;A, meetings, votes with thresholds, a record of BCRs and member decisions, sentiment tracking.</p>
+						<div class="card-action muted">In use today</div>
+					</div>
+
+					<div class="tool-card">
+						<div class="card-top">
+							<span class="tag">Fiscal Toolkit</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Property &amp; Service Tax Tool</h3>
+						<p class="card-desc">Rates by property class, revenue projections, member exemptions, comparison with the neighbouring municipality.</p>
+						<div class="card-action muted">In use today</div>
+					</div>
+
+					<div class="tool-card">
+						<div class="card-top">
+							<span class="tag">Fiscal Toolkit</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Sales Tax Estimator</h3>
+						<p class="card-desc">Taxable sales base, FNGST or FACT revenue, administration cost and break-even.</p>
+						<div class="card-action muted">In use today</div>
+					</div>
+
+					<div class="tool-card">
+						<div class="card-top">
+							<span class="tag">Fiscal Toolkit</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Fiscal Capacity Estimator</h3>
+						<p class="card-desc">OSR potential by stream against current revenue, and the gap to the cost of services.</p>
+						<div class="card-action muted">In use today</div>
+					</div>
+
+					<div class="tool-card">
+						<div class="card-top">
+							<span class="tag">Fiscal Toolkit</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Resource Royalty &amp; FNRT Estimator</h3>
+						<p class="card-desc">Project inputs, FNRT revenue under rate options, sharing among Nations, comparison with IBA payments.</p>
+						<div class="card-action muted">In use today</div>
+					</div>
+
+					<div class="tool-card">
+						<div class="card-top">
+							<span class="tag">Fiscal Toolkit</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Service Agreement Calculator</h3>
+						<p class="card-desc">Full cost of services, tax-based against fee-for-service options, FNTC precedents, a draft term sheet.</p>
+						<div class="card-action muted">In use today</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Front-Facing Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Financial Management Plug-in</h3>
+						<p class="card-desc">Reads Xyntax or Kwun'nun ledgers, flags gaps against FMB standards, builds statement drafts and local revenue account reports.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Front-Facing Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Funding Finder</h3>
+						<p class="card-desc">Matches the Nation's projects to open federal, provincial and foundation programs, with deadlines into the funding colleague.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Family: Learning Games -->
+			<div class="family-block">
+				<p class="section-eyebrow">Learning Games</p>
+				<h3 class="family-title">Learning Games</h3>
+				<p class="family-intro">
+					Games teach the concepts behind every other tool. Each runs in a Tulo class in under an hour,
+					uses real (anonymized) Nation cases, and ends with a debrief that ties every choice back to a
+					success factor.
+				</p>
+				<div class="tool-grid">
+
+					<a href="/resilient" class="tool-card">
+						<div class="card-top">
+							<span class="tag">Educational Game</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Building a Resilient Economy</h3>
+						<p class="card-desc">A fast-paced decision-making game where you advise a community through governance, investment, and development choices — balancing economic opportunity against delay, risk, and long-term resilience.</p>
+						<div class="card-action">Play the game →</div>
+					</a>
+
+					<a href="/opportunity-cost-lost" class="tool-card">
+						<div class="card-top">
+							<span class="tag">Educational Game</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Opportunity Cost or Lost</h3>
+						<p class="card-desc">A timed strategy game where you act as advisor to a Nation undertaking a development project — maximising benefits and minimising delay before the clock runs out.</p>
+						<div class="card-action">Play the game →</div>
+					</a>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Educational Game</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">The Advisor</h3>
+						<p class="card-desc">A strategic dialogue simulation where you play the nation's economic advisor. Make your case to the Chief of State across five structured turns — powered by a live AI that responds to your logic.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Educational Game</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">The Investor's Chair</h3>
+						<p class="card-desc">Players act as an investor choosing among three Nations' Snapshots, then see why they chose as they did.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Educational Game</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Snapshot Capstone</h3>
+						<p class="card-desc">Tulo students build their own Nation's Snapshot as a course project; it becomes the Nation's starting point for Pro.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Educational Game</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">AI Onboarding Micro-Credential</h3>
+						<p class="card-desc">Short Tulo modules using the colleagues and portal hands-on: safe use, data sovereignty and OCAP, checking an AI's sources, building a council package.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Educational Game</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Ratification Run</h3>
+						<p class="card-desc">Players plan an engagement campaign to pass a land code or tax law vote; reaching the turnout threshold depends on trust built over earlier rounds.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Family: Simulations -->
+			<div class="family-block">
+				<p class="section-eyebrow">Simulations</p>
+				<h3 class="family-title">Simulations</h3>
+				<p class="family-intro">
+					Simulations let a council or EDC test an option before committing. Each starts from the
+					Nation's own data in the portal, shows results in jobs, GDP and revenue, and saves scenarios
+					so they can be compared side by side.
+				</p>
+				<div class="tool-grid">
+
+					<a href="/impact-model" class="tool-card">
+						<div class="card-top">
+							<span class="tag">Analytical Tool</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Economic Impact Estimator</h3>
+						<p class="card-desc">Model the direct, indirect, and induced fiscal and economic impacts of a proposed project or investment — by province, industry, and multiplier type — and see who benefits and by how much.</p>
+						<div class="card-action">Launch the model →</div>
+					</a>
+
+					<div class="tool-card">
+						<div class="card-top">
+							<span class="tag">Simulation</span>
+							<span class="pill pill-live">Live</span>
+						</div>
+						<h3 class="card-title">Project Blueprint Simulator</h3>
+						<p class="card-desc">Test a project against gates G0 to G6 before committing; see which gates block it and how long each takes.</p>
+						<div class="card-action muted">In use today</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Simulation</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Investment Climate Agents</h3>
+						<p class="card-desc">Agents that run many readiness and impact scenarios over the economic development model and report which changes matter most.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Simulation</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Gap-Closure Simulator</h3>
+						<p class="card-desc">The Blueprint "what if" page as a live tool: close one readiness gap at a time and watch jobs and revenue move.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Simulation</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Tax Policy Simulator</h3>
+						<p class="card-desc">Change rates, exemptions or service fees and see revenue, investor cost and service funding move together, against the neighbouring municipality.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Simulation</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Growth &amp; Servicing Simulator</h3>
+						<p class="card-desc">Population and development growth scenarios against water, sewer and road capacity, with the year each system runs out.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Family: Planning Applications -->
+			<div class="family-block">
+				<p class="section-eyebrow">Planning Applications</p>
+				<h3 class="family-title">Planning Applications</h3>
+				<p class="family-intro">
+					Planning applications turn the chosen option into a plan people work from — shared by the
+					Nation, FR, institutions and vendors, with owners, dates and status that update as work is
+					done.
+				</p>
+				<div class="tool-grid">
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Planning Application</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Project Blueprint &amp; BRI</h3>
+						<p class="card-desc">Project inputs, 38 sub-gates, BRI and PFS scores, Estimator results, critical path.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Planning Application</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Workplan Generator</h3>
+						<p class="card-desc">Tasks pulled from Blueprint gaps, owners, supporting institutions and vendors, timelines, a shared tracker.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Planning Application</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Capital &amp; Asset Planning</h3>
+						<p class="card-desc">Links the asset registry to the capital plan, lifecycle costs and FNFA borrowing capacity.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Planning Application</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Plan Alignment Checker</h3>
+						<p class="card-desc">Tests whether the CCP, land use plan, capital plan and financial plan point at the same sites and projects, and flags conflicts.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Planning Application</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Law &amp; Policy Tracker</h3>
+						<p class="card-desc">Every law, policy and BCR with status, review date and the success factor it supports; feeds the Governance colleague.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- Family: Internal FR Tools -->
+			<div class="family-block">
+				<p class="section-eyebrow">Internal FR Tools</p>
+				<h3 class="family-title">Internal FR Tools</h3>
+				<p class="family-intro">
+					These let a small team deliver the products above without hiring in step with demand. Each is
+					also a working demonstration for Nations.
+				</p>
+				<div class="tool-grid">
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Internal FR Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">RFP &amp; Scope Scraper</h3>
+						<p class="card-desc">Weekly list of new tenders and calls matched to FR services, with a go/no-go note.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Internal FR Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Report Drafting Agent</h3>
+						<p class="card-desc">Drafts Snapshots, Pro reports and Blueprints from the database for economist sign-off.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Internal FR Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Desk Data Pullers</h3>
+						<p class="card-desc">Scheduled refresh of ISC profiles, Census, CWB, FNTC, FMB, FNFA, LABRC and FNFTA data into the hub.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Internal FR Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Insight Rules Engine</h3>
+						<p class="card-desc">The flags-and-severity table, growing with every economist override.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Internal FR Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">FR Knowledge Colleague</h3>
+						<p class="card-desc">Our past reports, models and senior staff's institutional knowledge, searchable with citations.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Internal FR Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Client Pipeline Tracker</h3>
+						<p class="card-desc">Turns every workplan's FR column into scoped, priced follow-on work.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+					<div class="tool-card coming">
+						<div class="card-top">
+							<span class="tag">Internal FR Tool</span>
+							<span class="pill pill-soon">Coming Soon</span>
+						</div>
+						<h3 class="card-title">Quality &amp; Consistency Checker</h3>
+						<p class="card-desc">Checks a draft against the indicator catalogue, house style and sources before it leaves the firm.</p>
+						<div class="card-action muted">Stay tuned</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- ── About strip ── -->
+	<section class="about-section">
+		<div class="section-inner about-inner">
+			<div>
+				<p class="section-eyebrow">Built for Practitioners</p>
+				<h2 class="about-title">Tools That Meet the Work</h2>
+				<p class="about-body">
+					Most economic education focuses on the analytical side — building the model,
+					running the numbers, writing the report. Our tools focus on the last mile:
+					the conversations, decisions, and judgement calls that follow the analysis.
+				</p>
+				<p class="about-body">
+					Each platform is designed around a specific professional challenge,
+					built to the standard that practitioners actually need.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- ── Footer ── -->
+	<footer class="footer">
+		<div class="footer-inner">
+			<p class="footer-copy">&copy; <span id="year"></span> Fiscal Realities Economists. All rights reserved.</p>
+			<a href="/privacy" class="footer-link">Privacy Policy</a>
+			<a href="/login" class="footer-link">Admin →</a>
+		</div>
+	</footer>
+
+</div>
+<script>
+	document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
